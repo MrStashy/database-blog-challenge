@@ -103,6 +103,15 @@ async function seed() {
     },
   });
 
+  const childComment1 = await prisma.comment.create({
+    data: {
+      content: "That's BANG OUT OF ORDER!",
+      parentCommentId: 1,
+      postId: 1,
+      userId: 3,
+    },
+  });
+
   // Don't edit any of the code below this line
   process.exit(0);
 }
