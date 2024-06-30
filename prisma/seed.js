@@ -14,6 +14,20 @@ async function seed() {
           profilePicUrl: "www.google.com",
         },
       },
+      posts: {
+        createMany: {
+          data: [
+            {
+              content: "I like other round baked items",
+              title: "The story of round baked items",
+            },
+            {
+              content: "I like fish and chips",
+              title: "The story of fried food",
+            },
+          ],
+        },
+      },
     },
   });
 
@@ -25,6 +39,17 @@ async function seed() {
         create: {
           biography: "It's a mystery",
           profilePicUrl: "www.yahoo.com",
+        },
+      },
+      posts: {
+        createMany: {
+          data: [
+            { content: "I like donuts", title: "The story of donuts" },
+            {
+              content: "I like pies",
+              title: "The story of pies",
+            },
+          ],
         },
       },
     },
@@ -40,6 +65,41 @@ async function seed() {
           profilePicUrl: "www.altavista.com",
         },
       },
+      posts: {
+        createMany: {
+          data: [
+            { content: "I like bagels", title: "The story of bagels" },
+            {
+              content: "Oh lordy",
+              title: "The story of oh lordy",
+            },
+          ],
+        },
+      },
+    },
+  });
+
+  const comment1 = await prisma.comment.create({
+    data: {
+      content: "I enjoyed this post! LOL!",
+      userId: 1,
+      postId: 1,
+    },
+  });
+
+  const comment2 = await prisma.comment.create({
+    data: {
+      content: "I disliked this post! LOL!",
+      userId: 2,
+      postId: 3,
+    },
+  });
+
+  const comment3 = await prisma.comment.create({
+    data: {
+      content: "I thought this post was bang average! LOL!",
+      userId: 3,
+      postId: 5,
     },
   });
 
